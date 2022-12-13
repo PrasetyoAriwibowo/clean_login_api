@@ -1,0 +1,19 @@
+{
+    "isSuccess": true,
+    "message": "Login Success",
+    "data": {
+        "user_id": 279,
+        "username": "08999395507",
+        "name": "Test Name",
+        "image_profile": null,
+        "login_type": "Phone",
+        "type_user": "PTN",
+        "detail": {
+            "petani_id": 239,
+            "latitude": null,
+            "longitude": null
+        },
+        "token": "N2Q4ZjdjYmVkMDBhNjU0NmRjOWM5MzkyYjhkOTBhZGFmZGI1YjQ1ZA==",
+        "fcm_token": null
+    }
+}
