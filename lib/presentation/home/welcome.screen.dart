@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../coolors.dart';
-import 'controllers/home.controller.dart';
+import 'controllers/welcome.controller.dart';
 import 'package:velocity_x/velocity_x.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class HomeScreen extends GetView<HomeController> {
-  const HomeScreen({Key? key}) : super(key: key);
+class WelcomeScreen extends GetView<WelcomeController> {
+  const WelcomeScreen({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -65,15 +65,14 @@ class HomeScreen extends GetView<HomeController> {
                     mainAxisSize: MainAxisSize.max,
                     alignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      ElevatedButton(
+                      TextButton(
                         style:
                             ElevatedButton.styleFrom(primary: Coolors.purplish),
                         onPressed: () {},
                         child: "Skip".text.white.make(),
                       ),
                       [
-                        ElevatedButton(
-                          
+                        TextButton(
                           style: ElevatedButton.styleFrom(
                               primary: Coolors.purplish),
                           onPressed: () {},
