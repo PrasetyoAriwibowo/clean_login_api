@@ -1,4 +1,9 @@
+import 'dart:io';
+
+import 'package:clean_login_api/infrastructure/navigation/routes.dart';
+import 'package:clean_login_api/presentation/components/base_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import '../../coolors.dart';
 import 'controllers/welcome.controller.dart';
@@ -10,88 +15,75 @@ class WelcomeScreen extends GetView<WelcomeController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Container(
-      child: Stack(
-        children: [
-          Container(
-            height: MediaQuery.of(context).size.height,
-            width: MediaQuery.of(context).size.width,
-            color: Coolors.purplish,
+        body: SingleChildScrollView(
+            child: Column(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        Container(
+          alignment: Alignment.centerLeft,
+          child: Image.asset(
+            height: 180,
+            "assets/images/main_top.png",
           ),
-          Container(
-            width: context.screenWidth,
-            height: context.percentHeight * 75,
-            decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.only(
-                  bottomLeft: Radius.circular(60),
-                  bottomRight: Radius.circular(60),
-                )),
-            child: VStack([
-              Container(
-                height: 250,
-                width: context.screenWidth,
-                child: SvgPicture.asset('assets/hello.svg'),
-              ).pOnly(top: 50, bottom: 32),
-              "Welcome . . .".text.center.extraBlack.xl3.makeCentered(),
-              8.heightBox,
-              "Welcome to my application, click Next or Skip to use more this application"
-                  .text
-                  .gray500
-                  .medium
-                  .center
-                  .makeCentered()
-                  .p16()
-            ]),
+        ),
+        Container(
+          child: Text("Welcome to My Apps...",
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20)),
+        ),
+        SizedBox(
+          height: 40,
+        ),
+        Container(
+          alignment: Alignment.center,
+          child: SvgPicture.asset(
+            "assets/welcome.svg",
+            height: 230,
+            width: 230,
           ),
-          Positioned(
-            child: Container(
-              height: context.percentHeight * 15,
-              child: VStack(
-                [
-                  HStack(
-                    [
-                      VxBox().square(5).gray500.roundedFull.make(),
-                      10.widthBox,
-                      VxBox().square(8).white.roundedFull.make(),
-                      10.widthBox,
-                      VxBox().square(5).gray500.roundedFull.make(),
-                    ],
-                    alignment: MainAxisAlignment.center,
-                  ).wFull(context),
-                  16.heightBox,
-                  Spacer(),
-                  ButtonBar(
-                    mainAxisSize: MainAxisSize.max,
-                    alignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      TextButton(
-                        style:
-                            ElevatedButton.styleFrom(primary: Coolors.purplish),
-                        onPressed: () {},
-                        child: "Skip".text.white.make(),
-                      ),
-                      [
-                        TextButton(
-                          style: ElevatedButton.styleFrom(
-                              primary: Coolors.purplish),
-                          onPressed: () {},
-                          child: "Next".text.white.make(),
-                        ).px2(),
-                        SvgPicture.asset(
-                          "assets/next.svg",
-                        )
-                      ].hStack()
-                    ],
-                  )
-                ],
-                alignment: MainAxisAlignment.start,
-              ).wFull(context),
+        ),
+        SizedBox(
+          height: 75,
+        ),
+        Container(
+            child: button(
+                text: "LOGIN",
+                style: TextStyle(fontWeight: FontWeight.bold),
+                onPressed: () {
+                  Get.toNamed(Routes.LOGIN);
+                },
+                buttonstyle: ElevatedButton.styleFrom(
+                  shape: StadiumBorder(),
+                  primary: Coolors.purplish,
+                  textStyle: TextStyle(color: Colors.white),
+                )).wh(context.screenWidth, 48).p16()),
+        Container(
+            child: button(
+                text: "REGISTER",
+                style: TextStyle(fontWeight: FontWeight.bold),
+                onPressed: () {
+                  Get.toNamed(Routes.REGISTER);
+                },
+                buttonstyle: ElevatedButton.styleFrom(
+                  shape: StadiumBorder(),
+                  primary: Coolors.purplish,
+                  textStyle: TextStyle(color: Colors.white),
+                )).wh(context.screenWidth, 48).p16()),
+        SizedBox(
+          height: 10,
+        ),
+        Container(
+          alignment: Alignment.bottomCenter,
+          child: InkWell(
+            onTap: () {
+              SystemNavigator.pop();
+            },
+            child: Text(
+              "Skip",
+              style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
             ),
-            bottom: 24,
           ),
-        ],
-      ),
-    ));
+        )
+      ],
+    )));
   }
 }
